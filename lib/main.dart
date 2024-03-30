@@ -76,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
     if(_serviceEnabled && permission) {
     _locationData = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
     print(_locationData.toString()); 
-    controller.move(LatLng(_locationData?.latitude ?? 50, _locationData?.latitude ?? 50), 14);
+    controller.move(LatLng(_locationData?.latitude ?? 50, _locationData?.latitude ?? 50),10);
     setState(() {});
     }
   }
@@ -92,7 +92,8 @@ class _MyHomePageState extends State<MyHomePage> {
         mapController: controller,
         options: const MapOptions(
           interactionOptions: InteractionOptions(
-            pinchZoomThreshold: 100
+            pinchZoomThreshold: 100, 
+            pinchZoomWinGestures: 1
           )
         ),
         children: [
